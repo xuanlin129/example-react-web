@@ -1,5 +1,5 @@
 import React from 'react';
-import { createBrowserRouter } from 'react-router-dom';
+import { createHashRouter } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
@@ -30,7 +30,7 @@ const routerConfig = [
   },
 ];
 
-const router = createBrowserRouter(
+const router = createHashRouter(
   routerConfig.map(({ path, element, children }) => {
     return {
       path,
