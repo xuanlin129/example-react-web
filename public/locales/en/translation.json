@@ -1,0 +1,12 @@
+{
+  "langs": {
+    "zh": "Chinese",
+    "en": "English"
+  },
+  "home": {
+    "title": "Home"
+  },
+  "about": {
+    "title": "About"
+  }
+}
