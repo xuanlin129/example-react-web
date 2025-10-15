@@ -1,1 +1,0 @@
-import{j as r}from"./index-DyRecfJ9.js";import{d as t}from"./styled-components.browser.esm-DDsqU0SV.js";function i(){return r.jsx(o,{children:r.jsx("h1",{children:"About"})})}const o=t.div``;export{i as default};
