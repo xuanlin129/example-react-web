@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
 import { Translate } from '@styled-icons/bootstrap';
 import { Bars } from '@styled-icons/fa-solid';
@@ -14,6 +14,7 @@ const navItems = [
 
 export default function Header() {
   const navigate = useNavigate();
+  const location = useLocation();
   const { t, i18n } = useTranslation();
   const [dimension] = useOutlet('dimension');
 
@@ -21,6 +22,8 @@ export default function Header() {
 
   const changeLanguage = React.useCallback(
     (lang) => {
+      if (lang === i18n.language) return;
+
       i18n.changeLanguage(lang);
     },
     [i18n]
@@ -58,11 +61,14 @@ export default function Header() {
         >
           <Ant.Divider type="vertical" style={{ borderColor: '#ccc', height: 25 }} />
           <Ant.Dropdown
+            style={{ width: 'max-content', textAlign: 'justify' }}
             menu={{
               items: [
                 { key: 'zh-TW', label: t('langs.zh') },
                 { key: 'en', label: t('langs.en') },
               ],
+              selectable: true,
+              defaultSelectedKeys: [i18n.language],
               onClick: ({ key }) => {
                 changeLanguage(key);
               },
@@ -91,7 +97,9 @@ export default function Header() {
         open={drawer}
       >
         <Ant.Menu
-          mode="inline"
+          mode="vertical"
+          style={{ border: 'none' }}
+          selectedKeys={location.pathname}
           onClick={(e) => {
             navigate(e.key);
             setDrawer(false);
