@@ -1,0 +1,1 @@
+import{j as r}from"./index--CytOqCt.js";import{d as t}from"./styled-components.browser.esm-Csk0g9Tl.js";function i(){return r.jsx(o,{children:r.jsx("h1",{children:"About"})})}const o=t.div``;export{i as default};
