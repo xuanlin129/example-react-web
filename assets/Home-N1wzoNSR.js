@@ -1,0 +1,1 @@
+import{j as r}from"./index-D63HTzYr.js";import{d as o}from"./styled-components.browser.esm-ByZvHMP8.js";function i(){return r.jsx(t,{children:r.jsx("h1",{children:"Home"})})}const t=o.div``;export{i as default};
