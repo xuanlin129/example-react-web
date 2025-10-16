@@ -1,8 +1,8 @@
 import React from 'react';
 import { Link, useNavigate, useLocation } from 'react-router-dom';
 import styled from 'styled-components';
-import { Translate } from '@styled-icons/bootstrap';
 import { Bars } from '@styled-icons/fa-solid';
+import { Language, ArrowDropDown } from '@styled-icons/material';
 import * as Ant from 'antd';
 import { useTranslation } from 'react-i18next';
 import { useOutlet } from 'reconnect.js';
@@ -42,24 +42,17 @@ export default function Header() {
           {/* <h2 style={{ fontSize: '20px', lineHeight: 1, marginLeft: 16 }}>示範網站</h2> */}
         </div>
 
-        {dimension.device === 'pc' && (
-          <Ant.Space size={16}>
-            {navItems.map((it, idx) => (
-              <Link to={it.path} key={idx}>
-                {it.name}
-              </Link>
-            ))}
-          </Ant.Space>
-        )}
-
-        <div
-          style={{
-            display: 'flex',
-            alignItems: 'center',
-            flexDirection: dimension.device === 'mb' ? 'row-reverse' : 'row',
-          }}
-        >
-          <Ant.Divider type="vertical" style={{ borderColor: '#ccc', height: 25 }} />
+        <nav>
+          {dimension.device === 'pc' && (
+            <Ant.Space size={16}>
+              {navItems.map((it, idx) => (
+                <Link to={it.path} key={idx}>
+                  {it.name}
+                </Link>
+              ))}
+            </Ant.Space>
+          )}
+          <Ant.Divider type="vertical" style={{ borderColor: '#ccc', height: 25, marginLeft: 16, marginRight: 16 }} />
           <Ant.Dropdown
             style={{ width: 'max-content', textAlign: 'justify' }}
             menu={{
@@ -74,18 +67,21 @@ export default function Header() {
               },
             }}
           >
-            <Translate size={30} color="#333" style={{ cursor: 'pointer' }} />
+            <div style={{ display: 'flex', gap: 0, alignItems: 'center', cursor: 'pointer' }}>
+              <Language size={30} color="#333" />
+              <ArrowDropDown size={15} color="#333" />
+            </div>
           </Ant.Dropdown>
-        </div>
 
-        {dimension.device === 'mb' && (
-          <Bars
-            size={30}
-            onClick={() => {
-              setDrawer(true);
-            }}
-          />
-        )}
+          {dimension.device === 'mb' && (
+            <Bars
+              size={30}
+              onClick={() => {
+                setDrawer(true);
+              }}
+            />
+          )}
+        </nav>
       </div>
 
       <Ant.Drawer
@@ -132,5 +128,11 @@ const Wrapper = styled.header`
     align-items: center;
     margin-right: auto;
     height: 100%;
+  }
+
+  & nav {
+    display: flex;
+    gap: 8;
+    align-items: center;
   }
 `;
