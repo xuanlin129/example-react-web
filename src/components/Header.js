@@ -38,7 +38,7 @@ export default function Header() {
             navigate('/');
           }}
         >
-          <img src={new URL('../assets/logo.jpg', import.meta.url).href} height="30%" />
+          <img src={new URL('../assets/xuan.png', import.meta.url).href} height="50" />
           {/* <h2 style={{ fontSize: '20px', lineHeight: 1, marginLeft: 16 }}>示範網站</h2> */}
         </div>
 
